@@ -9,15 +9,17 @@ const Header = () => {
     return (
         <div className="Header">
             <Stack direction="row" justifyContent="center">
-                <Typography variant="h3" gutterBottom
-                sx={{marginTop: 3, marginRight: 120}}>
-                    WebBlog
-                </Typography>
-                <Button sx={{marginTop: 1, marginRight: 4}}>
+                <Button href="/">
+                    <Typography variant="h3" gutterBottom
+                        sx={{ marginTop: 3, marginRight: 120 }}>
+                        WebBlog
+                    </Typography>
+                </Button>
+                <Button sx={{ marginTop: 1, marginRight: 4 }} href="/login">
                     Login
                 </Button>
-                <Button sx={{marginTop: 1, marginRight: 8}}>
-                    Logout
+                <Button sx={{ marginTop: 1, marginRight: 8 }} href="/signup">
+                    Signup
                 </Button>
             </Stack>
         </div>
