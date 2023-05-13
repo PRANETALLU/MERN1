@@ -8,30 +8,30 @@ const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const login = async(e) => {
+    const login = async (e) => {
         e.preventDefault();
     }
 
     return (
         <div className="Login">
-            <Stack direction="column" alignItems="center">
-                <form onSubmit={login}> 
-                <Typography sx={{fontWeight: "bold", marginTop: 3}}>Login</Typography>
-                <TextField 
-                    label="Username" 
-                    variant="outlined" 
-                    sx={{marginTop: 3}}
-                    onChange = {e => setUsername(e.target.value)}
-                />
-                <TextField 
-                    label="Password" 
-                    variant="outlined" 
-                    sx={{marginTop: 3}}
-                    onChange = {e => setPassword(e.target.value)}
-                />
-                <Button variant="contained" sx={{marginTop: 3}}>Login</Button>
-                </form>
-            </Stack>
+            <form onSubmit={login}>
+                <Stack direction="column" alignItems="center">
+                    <Typography sx={{ fontWeight: "bold", marginTop: 3 }}>Login to your account</Typography>
+                    <TextField
+                        label="Username"
+                        variant="outlined"
+                        sx={{ marginTop: 3 }}
+                        onChange={e => setUsername(e.target.value)}
+                    />
+                    <TextField
+                        label="Password"
+                        variant="outlined"
+                        sx={{ marginTop: 3 }}
+                        onChange={e => setPassword(e.target.value)}
+                    />
+                    <Button variant="contained" sx={{ marginTop: 3 }}>Login</Button>
+                </Stack>
+            </form>
         </div>
     )
 }
