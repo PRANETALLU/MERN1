@@ -2,3 +2,8 @@
     height: 70vh; 
     background-color: white;
 }
+
+img {
+    max-width: 50%;
+    max-height: 100%;
+}
