@@ -10,6 +10,9 @@ const Login = () => {
 
     const login = async (e) => {
         e.preventDefault();
+        console.log(username);
+        console.log(password);
+
     }
 
     return (
@@ -21,15 +24,17 @@ const Login = () => {
                         label="Username"
                         variant="outlined"
                         sx={{ marginTop: 3 }}
+
                         onChange={e => setUsername(e.target.value)}
                     />
                     <TextField
                         label="Password"
                         variant="outlined"
                         sx={{ marginTop: 3 }}
+
                         onChange={e => setPassword(e.target.value)}
                     />
-                    <Button variant="contained" sx={{ marginTop: 3 }}>Login</Button>
+                    <Button variant="contained" sx={{ marginTop: 3 }} type="submit">Login</Button>
                 </Stack>
             </form>
         </div>

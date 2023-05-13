@@ -10,6 +10,8 @@ const SignUp = () => {
 
     const signup = async (e) => {
         e.preventDefault();
+        console.log(username);
+        console.log(password);
     }
 
     return (
@@ -29,7 +31,7 @@ const SignUp = () => {
                         sx={{ marginTop: 3 }}
                         onChange={e => setPassword(e.target.value)}
                     />
-                    <Button variant="contained" sx={{ marginTop: 3 }}>Sign Up</Button>
+                    <Button variant="contained" sx={{ marginTop: 3 }} type="submit">Sign Up</Button>
                 </Stack>
             </form>
         </div>
