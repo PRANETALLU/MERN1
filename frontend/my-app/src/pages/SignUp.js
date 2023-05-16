@@ -10,6 +10,17 @@ const SignUp = () => {
 
     const signup = async (e) => {
         e.preventDefault();
+        console.log("I am here")
+        const response = await fetch('http://localhost:3001/signup', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({
+                username,
+                password
+            })
+        })
+        console.log(response.status);
         console.log(username);
         console.log(password);
     }
