@@ -11,6 +11,7 @@ import './CSS/Main.css';
 import './CSS/Footer.css';
 import './CSS/Signup.css';
 import './CSS/Login.css';
+import './CSS/Post.css';
 
 function App() {
   return (
