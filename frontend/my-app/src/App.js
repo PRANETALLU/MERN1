@@ -6,23 +6,29 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Create from './pages/Create';
 import './CSS/Header.css';
 import './CSS/Main.css';
 import './CSS/Footer.css';
 import './CSS/Signup.css';
 import './CSS/Login.css';
 import './CSS/Post.css';
+import './CSS/Create.css';
+import UserContextProvider from './components/UserContext';
 
 function App() {
   return (
     <div>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
+        <UserContextProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/create" element={<Create />} />
+          </Routes>
+        </UserContextProvider>
         <Footer />
       </BrowserRouter>
     </div>

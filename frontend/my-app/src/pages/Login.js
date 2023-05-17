@@ -2,14 +2,36 @@ import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from "../components/UserContext";
 
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const {setUserInfo} = useContext(UserContext);
+    const navigate = useNavigate();
 
     const login = async (e) => {
         e.preventDefault();
+        const response = await fetch('http://localhost:3001/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include', // cookie will be considered as credentials and will be saved. not needed for signup.
+            body: JSON.stringify({
+                username,
+                password
+            })
+        })
+        if (response.status == 200) {
+            response.json().then(userInfo => {
+                setUserInfo(userInfo);
+                navigate('/');
+            });
+        }
+        else {
+            alert('Login Unsuccessful');
+        }
         console.log(username);
         console.log(password);
 
