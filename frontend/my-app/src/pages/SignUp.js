@@ -23,6 +23,7 @@ const SignUp = () => {
             alert('Registration Successful');
         }
         else {
+            console.log("response: " + response.status);
             alert('Registration Unsuccessful');
         }
         console.log(username);

@@ -12,7 +12,6 @@ const Header = () => {
     // then or await same thing
     useEffect(() => {
         fetch('http://localhost:3001/profile', {
-            method: 'POST',
             credentials: 'include',
         }).then(response => {
             response.json().then(userInfo => {
@@ -32,6 +31,8 @@ const Header = () => {
 
     const username = userInfo?.username;
 
+    console.log("Does it exist: " + userInfo?.username);
+
     return (
         <div className="Header">
             <Stack direction="row" justifyContent="center">
@@ -41,6 +42,14 @@ const Header = () => {
                         WebBlog
                     </Typography>
                 </Button>
+                {username && (<>
+                    <Button sx={{ marginTop: 1, marginRight: 4 }} href="/create">
+                        Create
+                    </Button>
+                    <Button sx={{ marginTop: 1, marginRight: 8 }} onClick={logout} href="/login">
+                        Logout
+                    </Button>
+                </>)}
                 {!username && (<>
                     <Button sx={{ marginTop: 1, marginRight: 4 }} href="/login">
                         Login
@@ -48,14 +57,6 @@ const Header = () => {
                     <Button sx={{ marginTop: 1, marginRight: 8 }} href="/signup">
                         Signup
                     </Button> </>)}
-                {username && (<>
-                    <Button sx={{ marginTop: 1, marginRight: 4 }} href="/create">
-                        Create
-                    </Button>
-                    <Button sx={{ marginTop: 1, marginRight: 8 }} href="/login">
-                        Logout
-                    </Button>
-                </>)}
             </Stack>
         </div>
     );

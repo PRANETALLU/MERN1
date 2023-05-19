@@ -4,34 +4,44 @@ import Typography from '@mui/material/Typography';
 import { Stack } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useEffect } from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import TextField from '@mui/material/TextField';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import {UserContext} from "../components/UserContext";
 
 
 const Create = () => {
     const [title, setTitle] = useState('');
     const [summary, setSummary] = useState('');
-    //const [file, setFile] = useState('');
+    const [image, setImage] = useState('');
     const [content, setContent] = useState('');
+    const {userInfo, setUserInfo} = useContext(UserContext);
+    
+    console.log(userInfo?.username);
 
     const newPost = async (e) => {
         e.preventDefault();
-        const response = await fetch('http://localhost:3001/create', {
+        const response = await fetch('http://localhost:3001/post', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include', // cookie will be considered as credentials and will be saved. not needed for signup.
             body: JSON.stringify({
                 title,
                 summary,
-                content
+                content,
+                image
             })
         })
         console.log(title);
         console.log(summary);
-        //console.log(file);
         console.log(content);
+        console.log(image);
+
+        setTitle('');
+        setSummary('');
+        setImage('');
+        setContent('');
     }
 
     return (
@@ -52,9 +62,13 @@ const Create = () => {
                         value={summary}
                         onChange={e => setSummary(e.target.value)}
                     />
-                    {/*<input type="file"
-                        onChange = {e => {setFile(e.target.file)}}
-                    />*/}
+                    <TextField
+                        label="Image URL"
+                        variant="outlined"
+                        sx={{ marginTop: 2 }}
+                        value={image}
+                        onChange={e => setImage(e.target.value)}
+                    />
                     <ReactQuill
                         value={content}
                         onChange={newValue => setContent(newValue)}
