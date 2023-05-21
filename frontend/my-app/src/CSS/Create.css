@@ -1,0 +1,10 @@
+.react-quill {
+    height: 200px; 
+    width: 1400px;
+    margin-left: 1%;
+}
+
+.create {
+    height: 70vh; 
+    background-color: white;
+}

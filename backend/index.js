@@ -24,7 +24,7 @@ db.once('open', () => {
 });
 
 app.use(cors({
-  origin:'http://localhost:3000',
+  origin: 'http://localhost:3000',
   credentials: true,
   allowedHeaders: 'Content-Type'
 })); // provides permission to backend 
@@ -123,16 +123,16 @@ app.put('/post', async (req, res) => {
       throw err;
     }
     else {
-      const {id, title, summary, image, content} = req.body; 
+      const { id, title, summary, image, content } = req.body;
       const postDoc = await Post.findById(id);
       if (info.id == postDoc.author) {
         await postDoc.updateOne({
-          title, 
-          summary, 
+          title,
+          summary,
           content,
           image
         });
-        res.status(201).json(postDoc); 
+        res.status(201).json(postDoc);
       }
       else {
         res.status(400).json("You are not the author");
@@ -152,9 +152,23 @@ app.get('/post', async (req, res) => {
 })
 
 app.get('/post/:id', async (req, res) => {
-  const {id} = req.params;
-  const postDoc = await Post.findById(id).populate('author', ['username']); 
+  const { id } = req.params;
+  const postDoc = await Post.findById(id).populate('author', ['username']);
   res.json(postDoc);
+})
+
+app.delete('/delete/:id', async (req, res) => {
+  const { token } = req.cookies;
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) {
+      res.status(400).json("Invalid User"); 
+    }
+    else {
+      const { id } = req.params;
+      const postDoc = await Post.findByIdAndDelete(id);
+      res.status(201).json(postDoc);
+    }
+  })
 })
 
 

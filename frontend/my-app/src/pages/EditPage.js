@@ -53,37 +53,38 @@ const EditPage = () => {
             alert("No proper update");
         }
     }
-
+    
     return (
         <div className="EditPage">
             <form onSubmit={updatePost}>
-                <Stack direction="column" sx={{ marginTop: 5 }}>
+                <Stack direction="column" sx={{ marginTop: 5, justifyContent: "center" }}>
                     <TextField
                         label="Title"
                         variant="outlined"
-                        sx={{ marginTop: 2 }}
+                        sx={{ marginTop: 1, marginLeft: 2, width: 1300 }}
                         value={title}
                         onChange={e => setTitle(e.target.value)}
                     />
                     <TextField
                         label="Summary"
                         variant="outlined"
-                        sx={{ marginTop: 2 }}
+                        sx={{ marginTop: 1, marginLeft: 2, width: 1300 }}
                         value={summary}
                         onChange={e => setSummary(e.target.value)}
                     />
                     <TextField
                         label="Image URL"
                         variant="outlined"
-                        sx={{ marginTop: 2 }}
+                        sx={{ marginTop: 1, marginLeft: 2, width: 1300, marginBottom: 2 }}
                         value={image}
                         onChange={e => setImage(e.target.value)}
                     />
                     <ReactQuill
+                        className='react-quill'
                         value={content}
                         onChange={newValue => setContent(newValue)}
                     />
-                    <Button type="submit">
+                    <Button type="submit" variant="contained" sx={{width: 140, height: 35, marginTop: 8, marginLeft: 80}}>
                         Update Post
                     </Button>
                 </Stack>

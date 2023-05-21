@@ -43,7 +43,7 @@ const Login = () => {
         <div className="Login">
             <form onSubmit={login}>
                 <Stack direction="column" alignItems="center">
-                    <Typography sx={{ fontWeight: "bold", marginTop: 3 }}>Login to your account</Typography>
+                    <Typography sx={{ fontWeight: "bold", marginTop: 6 }}>Login to your account</Typography>
                     <TextField
                         label="Username"
                         variant="outlined"

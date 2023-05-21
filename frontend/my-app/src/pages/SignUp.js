@@ -19,7 +19,7 @@ const SignUp = () => {
                 password
             })
         })
-        if(response.status == 200) {
+        if(response.ok) {
             alert('Registration Successful');
         }
         else {
@@ -34,7 +34,7 @@ const SignUp = () => {
         <div className="Signup">
             <form onSubmit={signup}>
                 <Stack direction="column" alignItems="center">
-                    <Typography sx={{ fontWeight: "bold", marginTop: 3 }}>Register for an account</Typography>
+                    <Typography sx={{ fontWeight: "bold", marginTop: 6 }}>Register for an account</Typography>
                     <TextField
                         label="Username"
                         variant="outlined"
